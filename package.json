@@ -1,0 +1,52 @@
+{
+  "name": "jvc-cli",
+  "version": "0.1.0",
+  "description": "CLI jeuxvideo.com client.",
+  "homepage": "https://github.com/valeriangalliat/jvc-cli",
+  "license": {
+    "type": "Unlicense",
+    "url": "http://unlicense.org/"
+  },
+  "author": {
+    "name": "Valérian Galliat",
+    "url": "http://val.codejam.info/"
+  },
+  "files": [
+    "README.md",
+    "UNLICENSE",
+    "bin/jvc",
+    "captcha.js",
+    "index.js",
+    "pm.js",
+    "ui.js",
+    "user.js",
+    "util.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/valeriangalliat/jvc-cli.git"
+  },
+  "dependencies": {
+    "babel-runtime": "^4.5.0",
+    "bind-late": "^1.0.1",
+    "chalk": "^1.0.0",
+    "cli-table": "^0.3.1",
+    "configstore": "^0.3.2",
+    "docopt": "^0.6.0",
+    "es6-denodeify": "^0.1.1",
+    "is": "^3.0.1",
+    "jvc": "^0.2.0",
+    "open": "0.0.5",
+    "promisepipe": "^1.0.1",
+    "read": "^1.0.5",
+    "request": "^2.53.0",
+    "temp": "^0.8.1"
+  },
+  "devDependencies": {
+    "babel": "^4.5.0"
+  },
+  "scripts": {
+    "build": "babel src --out-dir .",
+    "prepublish": "$npm_package_scripts_build"
+  }
+}
