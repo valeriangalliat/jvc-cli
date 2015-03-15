@@ -1,5 +1,8 @@
 export default ({ state, opts, ui, handleCaptcha, jvc }) => ({
-  logout: async () => state.all = {},
+  logout: async () => {
+    state.set({})
+    state.write()
+  },
 
   login: async () => {
     const user = opts['<user>'] || await ui.prompt({ prompt: 'User:' })
@@ -12,11 +15,10 @@ export default ({ state, opts, ui, handleCaptcha, jvc }) => ({
     const connectedJvc = await jvc.login({ user, pass })
       .then(null, handleCaptcha)
 
-    state.set('jvc', {
-      user: {
-        user,
-        cookie: connectedJvc.user.cookie,
-      },
-    })
+    state.jvc = {
+      user: { user, cookie: connectedJvc.user.cookie },
+    }
+
+    state.write()
   },
 })

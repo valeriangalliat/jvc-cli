@@ -21,7 +21,8 @@ const findThread = (...args) => {
 export default ({ state, opts, ui, jvc }) => bindLate({
   list: async ({ page } = {}) => {
     const list = await jvc.pm.list({ page })
-    state.set('pm', { list })
+    state.pm = { list }
+    state.write()
 
     console.log(ui.table(
       { head: ['R', 'ID', 'From', 'Subject', 'Date'] },
@@ -37,7 +38,8 @@ export default ({ state, opts, ui, jvc }) => bindLate({
 
   thread: async ({ id, offset }) => {
     const thread = await jvc.pm.thread({ id, offset })
-    state.set('pm', Object.assign({}, state.get('pm'), { thread }))
+    state.pm = Object.assign({}, state.pm, { thread })
+    state.write()
 
     thread.messages.forEach(m => {
       console.log(ui.title(`${ui.chalk.bold(m.author)} ${ui.chalk.grey(ui.dateTime(m.date))}`))
@@ -52,24 +54,24 @@ export default ({ state, opts, ui, jvc }) => bindLate({
       return await _.list()
     }
 
-    if (!state.all.pm) {
+    if (!state.pm) {
       throw err('No PM list to search.')
     }
 
-    await _.thread({ id: findThread(opts['<query>'], state.all.pm.list).id })
+    await _.thread({ id: findThread(opts['<query>'], state.pm.list).id })
   },
 
   next: _ => async () => {
-    if (state.all.pm && state.all.pm.thread) {
+    if (state.pm && state.pm.thread) {
       return await _.thread({
-        id: state.all.pm.thread.id,
-        offset: state.all.pm.thread.next,
+        id: state.pm.thread.id,
+        offset: state.pm.thread.next,
       })
     }
 
-    if (state.all.pm && state.all.pm.list) {
+    if (state.pm && state.pm.list) {
       return await _.list({
-        page: state.all.pm.list.page + 1,
+        page: state.pm.list.page + 1,
       })
     }
 

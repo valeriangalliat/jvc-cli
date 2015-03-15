@@ -1,8 +1,7 @@
-const { err } = require('./util')
+const { err, state } = require('./util')
 const pkg = require('./package')
 
 const bindLate = require('bind-late')
-const Config = require('configstore')
 const { docopt } = require('docopt')
 const jvc = require('jvc')
 
@@ -20,12 +19,13 @@ Options:
 `.trim()
 
 export default bindLate({
-  state: _ => new Config(pkg.name),
+  persistent: true,
+  state: _ => state(_.persistent, pkg.name),
   opts: _ => docopt(doc, { argv: _.argv, version: pkg.version }),
 
   ui: _ => require('./ui').override({ color: _.opts['--color'] || null }),
   captcha: _ => require('./captcha').override({ ui: _.ui }),
-  jvc: _ => jvc.override(_.state.all.jvc),
+  jvc: _ => jvc.override(_.state.jvc),
 
   user: _ => require('./user')({
     state: _.state,
@@ -48,7 +48,7 @@ export default bindLate({
     pm: _ => _.pm.pm,
 
     next: _ => async opts => {
-      if (_.state.all.pm) {
+      if (_.state.pm) {
         return await _.pm.next(opts)
       }
 
