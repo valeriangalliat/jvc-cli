@@ -2,7 +2,7 @@
 
 > CLI [jeuxvideo.com] client.
 
-[jeuxvideo.com]: http://www.jeuxvideo.com/
+[jeuxvideo.com]: https://www.jeuxvideo.com/
 
 Caution
 -------
