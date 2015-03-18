@@ -21,8 +21,8 @@ export default bindLate({
       : text,
 
   ask: _ => question =>
-    `${_.chalk.green(_.chevron)} ${_.greyParens(question)}`
-      + (_.chalk.enabled ? chalk.styles.cyan.open : ''),
+    `${_.chalk.green(_.chevron)} ${_.greyParens(question)}` +
+      (_.chalk.enabled ? chalk.styles.cyan.open : ''),
 
   prompt: _ => opts =>
     read(Object.assign({}, opts, { prompt: _.ask(opts.prompt) })),
@@ -47,8 +47,8 @@ export default bindLate({
       .substr(0, 19),
 
   title: _ => title =>
-    title + '\n'
-      + _.chalk.gray(String.repeat('─', _.chalk.stripColor(title).length)),
+    title + '\n' +
+      _.chalk.gray(String.repeat('─', _.chalk.stripColor(title).length)),
 
   post: _ => post =>
     _.chalk.enabled
