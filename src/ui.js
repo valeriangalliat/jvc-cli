@@ -2,7 +2,7 @@ const { denodeify } = require('./util')
 const bindLate = require('bind-late')
 const chalk = require('chalk')
 const read = denodeify(require('read'))
-const Table = require('cli-table');
+const Table = require('cli-table')
 
 export default bindLate({
   color: false,
