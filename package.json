@@ -3,10 +3,7 @@
   "version": "0.1.1",
   "description": "CLI jeuxvideo.com client.",
   "homepage": "https://github.com/valeriangalliat/jvc-cli",
-  "license": {
-    "type": "Unlicense",
-    "url": "http://unlicense.org/"
-  },
+  "license": "Unlicense",
   "author": {
     "name": "Valérian Galliat",
     "url": "http://val.codejam.info/"
