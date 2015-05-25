@@ -1,6 +1,6 @@
 {
   "name": "jvc-cli",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "CLI jeuxvideo.com client.",
   "homepage": "https://github.com/valeriangalliat/jvc-cli",
   "license": "Unlicense",
