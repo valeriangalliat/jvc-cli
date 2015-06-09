@@ -12,7 +12,7 @@ export const state = (persistent, id) => {
     value: object => {
       Object.keys(state).forEach(key => delete state[key])
       Object.assign(state, object)
-    },
+    }
   })
 
   if (persistent) {

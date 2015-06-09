@@ -59,5 +59,5 @@ export default bindLate({
     const table = new Table(opts)
     table.push(...rows)
     return table.toString()
-  },
+  }
 })

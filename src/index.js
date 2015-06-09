@@ -32,14 +32,14 @@ export default bindLate({
     opts: _.opts,
     ui: _.ui,
     handleCaptcha: _.captcha.handle,
-    jvc: _.jvc,
+    jvc: _.jvc
   }),
 
   pm: _ => require('./pm')({
     state: _.state,
     opts: _.opts,
     ui: _.ui,
-    jvc: _.jvc,
+    jvc: _.jvc
   }),
 
   commands: {
@@ -53,7 +53,7 @@ export default bindLate({
       }
 
       throw err('Don\'t know what to do.')
-    },
+    }
   },
 
   // Invoke current command (need fullfilled options).

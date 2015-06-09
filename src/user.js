@@ -9,16 +9,16 @@ export default ({ state, opts, ui, handleCaptcha, jvc }) => ({
 
     const pass = await ui.prompt({
       prompt: 'Pass (will not echo):',
-      silent: true,
+      silent: true
     })
 
     const connectedJvc = await jvc.login({ user, pass })
       .then(null, handleCaptcha)
 
     state.jvc = {
-      user: { user, cookie: connectedJvc.user.cookie },
+      user: { user, cookie: connectedJvc.user.cookie }
     }
 
     state.write()
-  },
+  }
 })

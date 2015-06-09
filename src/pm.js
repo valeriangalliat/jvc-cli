@@ -31,7 +31,7 @@ export default ({ state, opts, ui, jvc }) => bindLate({
         i,
         t.author,
         t.subject,
-        ui.date(t.date),
+        ui.date(t.date)
       ])
     ))
   },
@@ -65,16 +65,16 @@ export default ({ state, opts, ui, jvc }) => bindLate({
     if (state.pm && state.pm.thread) {
       return await _.thread({
         id: state.pm.thread.id,
-        offset: state.pm.thread.next,
+        offset: state.pm.thread.next
       })
     }
 
     if (state.pm && state.pm.list) {
       return await _.list({
-        page: state.pm.list.page + 1,
+        page: state.pm.list.page + 1
       })
     }
 
     throw err('Don\'t know what to do.')
-  },
+  }
 })
